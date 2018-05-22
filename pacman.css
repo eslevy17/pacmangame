@@ -1,0 +1,59 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+
+div.row div {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-bottom: -4px;
+}
+div.brick {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+}
+div.empty {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+}
+
+div.coin {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    background-image: url("mario_coin1.gif");
+    background-position: center;
+    background-size: 24px;
+}
+
+#pacman {
+    background-color: black;
+    background-image: url("pacman.gif");
+    background-position: center;
+    background-size: 60px;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 30px;
+    left: 30px;
+}
+
+#score {
+    margin: 20px;
+    font-family: verdana;
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#overalldiv {
+    text-align: center;
+    position: absolute;
+}

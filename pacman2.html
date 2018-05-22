@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="pacman.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="overalldiv">
+        <div id="world"></div>
+        <div id="score"></div>
+        <div id="pacman"></div>
+    </div>
+
+    
+</body>
+
+<script>
+
+var world = [
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,0,0,0,0,0,0,0,0,2],
+    [2,0,1,1,0,1,0,0,0,2],
+    [2,0,1,1,1,1,1,0,0,2],
+    [2,0,1,1,0,1,1,0,0,2],
+    [2,0,1,1,1,1,1,0,0,2],
+    [2,0,1,0,0,1,1,0,0,2],
+    [2,0,0,1,0,0,1,0,0,2],
+    [2,0,0,0,0,1,1,0,0,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    ];
+
+function drawWorld() {
+    var output = "";
+    for (var i = 0; i < world.length; i ++) {
+        output += '<div class="row">';
+        for (var j = 0; j < world[i].length; j ++) {
+            if ((world[i][j]) == 2) {
+                output += '<div class="brick"></div>';
+            }
+            if ((world[i][j]) == 1) {
+                output += '<div class="coin"></div>';
+            }
+            if ((world[i][j]) == 0) {
+                output += '<div class="empty"></div>';
+            }
+            if ((world[i][j]) == 3) {
+                output += '<div class="pacman"></div>'
+            }
+        }
+        output += '</div>'
+    }
+    document.getElementById("world").innerHTML = output;
+}
+drawWorld();
+
+var leftValue = 1;
+var topValue = 1;
+var score = 0;
+
+function drawScore() {
+    document.getElementById("score").innerHTML = "Score: " + score;
+}
+drawScore();
+
+function movement() {
+    document.getElementById("pacman").style.left = leftValue*30+"px";
+    document.getElementById("pacman").style.top = topValue*30+"px";
+}
+
+document.onkeydown = function(e) {
+    console.log(e);
+    if (e.keyCode == 37 && world[topValue][leftValue-1] != 2) {
+        leftValue -= 1;
+    }
+    if (e.keyCode == 39 && world[topValue][leftValue+1] != 2) {
+        leftValue += 1;
+    }
+    if (e.keyCode == 38 && world[topValue-1][leftValue] != 2) {
+        topValue -= 1
+    }
+    if (e.keyCode == 40 && world[topValue+1][leftValue] != 2) {
+        topValue += 1
+    }
+    if (world[topValue][leftValue] == 1) {
+        world[topValue][leftValue] = 0;
+        score += 10;
+    }
+    drawWorld();
+    drawScore();
+    movement();
+
+}
+
+
+</script>
+
+
+
+
+
+</html>
